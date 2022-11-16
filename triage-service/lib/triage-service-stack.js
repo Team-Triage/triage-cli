@@ -8,7 +8,7 @@ const ecs_patterns = require("aws-cdk-lib/aws-ecs-patterns");
 
 const DEAD_LETTER_TABLE_NAME = "TriageDeadLettersTopicName"
 
-class TriageCliStack extends Stack {
+class TriageServiceStack extends Stack {
   /**
    *
    * @param {Construct} scope
@@ -80,4 +80,4 @@ class TriageCliStack extends Stack {
   }
 }
 
-module.exports = { TriageCliStack }
+module.exports = { TriageServiceStack }

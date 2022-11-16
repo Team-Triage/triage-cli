@@ -1,8 +1,8 @@
 {
-  "name": "triage-cli",
+  "name": "triage-service",
   "version": "0.1.0",
   "bin": {
-    "triage-cli": "bin/triage-cli.js"
+    "triage-service": "bin/triage-service.js"
   },
   "scripts": {
     "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
@@ -10,11 +10,11 @@
     "test": "jest"
   },
   "devDependencies": {
-    "aws-cdk": "^2.50.0",
+    "aws-cdk": "2.50.0",
     "jest": "^27.5.1"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.50.0",
+    "aws-cdk-lib": "2.50.0",
     "constructs": "^10.0.0"
   }
 }
