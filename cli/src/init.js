@@ -1,6 +1,7 @@
+import createConfigFile from '../utils/createConfigFile'
+
 function init () {
-  // const TOPIC_NAME = readlineSync.question("Please enter your topic name: ")
-  // createFile('config.properties', TOPIC_NAME)
+  createConfigFile('config.properties')
   console.log("config.properties created!")
 }
 

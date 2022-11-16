@@ -1,17 +1,13 @@
-import executeCommand from "../utils/executeCommand"
 import init from './init'
 import deploy from './deploy'
 
 export function cli(args) {
-  // console.log(args);
   let option = parseArgs(args)
 
   if (option == 1) {
-    executeCommand("echo init: \"I'm a bash command!\"")
     init()
   } else {
     deploy()
-    executeCommand("echo DEPLOY: \"I'm a bash command!\"")
   }
 }
 
