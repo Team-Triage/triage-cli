@@ -8,6 +8,8 @@ const ecs_patterns = require("aws-cdk-lib/aws-ecs-patterns");
 
 const DEAD_LETTER_TABLE_NAME = "TriageDeadLettersTopicName"
 
+const TOPIC_NAME = process.env.TOPIC_NAME
+
 class TriageServiceStack extends Stack {
   /**
    *

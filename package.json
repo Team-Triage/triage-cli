@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": {
     "@team-triage/triage": "cli/bin/triage",
-    "triage": "./cli/bin/triage"
+    "triage": "cli/bin/triage"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/Team-Triage/triage-cli#readme",
   "dependencies": {
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "properties-reader": "^2.2.0",
+    "readline-sync": "^1.4.10"
   }
 }

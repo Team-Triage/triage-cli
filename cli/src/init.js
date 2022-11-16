@@ -1,9 +1,7 @@
-import createFile from "../utils/createFile";
-
 function init () {
-  console.log("About to create")
-  createFile('config.properties')
-  console.log("Created")
+  // const TOPIC_NAME = readlineSync.question("Please enter your topic name: ")
+  // createFile('config.properties', TOPIC_NAME)
+  console.log("config.properties created!")
 }
 
 export default init

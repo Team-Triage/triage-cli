@@ -1,5 +1,6 @@
 import executeCommand from "../utils/executeCommand"
 import init from './init'
+import deploy from './deploy'
 
 export function cli(args) {
   // console.log(args);
@@ -9,7 +10,7 @@ export function cli(args) {
     executeCommand("echo init: \"I'm a bash command!\"")
     init()
   } else {
-    deploy(console.log("I'm deploying!"))
+    deploy()
     executeCommand("echo DEPLOY: \"I'm a bash command!\"")
   }
 }
@@ -20,8 +21,6 @@ const options = {
   "-i": 1,
   "-d": 2,
 }
-
-function deploy() {}
 
 function parseArgs(rawArgs) {
   let args = rawArgs.slice(2)
