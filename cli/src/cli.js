@@ -3,8 +3,8 @@ import deploy from './deploy'
 
 export function cli(args) {
   let option = parseArgs(args)
-
-  if (option == 1) {
+  // write clause to catch no args
+  if (option === 1) {
     init()
   } else {
     deploy()
