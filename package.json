@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "@team-triage/triage": "cli/bin/triage",
+    "triage": "./cli/bin/triage"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Team-Triage/triage-cli/issues"
   },
-  "homepage": "https://github.com/Team-Triage/triage-cli#readme"
+  "homepage": "https://github.com/Team-Triage/triage-cli#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
 }

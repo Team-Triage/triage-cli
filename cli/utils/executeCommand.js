@@ -1,8 +1,9 @@
 const { exec } = require("child_process");
 
 
-function executeCommand() {
-  let execution = exec('cd triage-undefined && npm init -y');
+function executeCommand(command) {
+  // let execution = exec('cd triage-undefined && npm init -y');
+  let execution = exec(command);
 
   execution.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);

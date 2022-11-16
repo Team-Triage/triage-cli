@@ -1,12 +1,13 @@
 fs = require('fs')
 
-function createFile() {
-  let logger = fs.createWriteStream('config.properties', {
+function createFile(path) {
+  let logger = fs.createWriteStream(path, {
     flags: 'a' // 'a' means appending (old data will be preserved)
   })
+  logger.write('topic.name= \n') 
+  logger.write('num.of.partitions= \n')
   logger.write('bootstrap_servers= \n') // append string to your file
   logger.write('session.timeout.ms= \n') 
-  logger.write('topic.name= \n') 
 }
 
 module.exports = createFile
