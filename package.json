@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "@team-triage/triage": "cli/bin/triage",
     "triage": "cli/bin/triage"
   },
   "scripts": {
