@@ -1,7 +1,12 @@
 import executeCommand from "../utils/executeCommand"
 import PropertiesReader from "properties-reader"
+import writeConfigFile from "../utils/writeConfigFile"
+import getKey from '../utils/getKey'
 
 function deploy() {
+  console.log('Adding authentication token to config')
+  writeConfigFile('config.properties', `authentication.token=${getKey()}`)
+
   console.log('Copying config.properties')
   executeCommand("cp config.properties ./src/config.properties")
 
