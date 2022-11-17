@@ -1,20 +1,29 @@
 {
   "name": "triage-cli",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "bin": {
-    "triage-cli": "bin/triage-cli.js"
+    "triage": "cli/bin/triage"
   },
   "scripts": {
-    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
-    "cdk": "cdk",
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "aws-cdk": "^2.50.0",
-    "jest": "^27.5.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Triage/triage-cli.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Triage/triage-cli/issues"
+  },
+  "homepage": "https://github.com/Team-Triage/triage-cli#readme",
   "dependencies": {
-    "aws-cdk-lib": "^2.50.0",
-    "constructs": "^10.0.0"
+    "crypto-random-string": "^5.0.0",
+    "esm": "^3.2.25",
+    "properties-reader": "^2.2.0",
+    "readline-sync": "^1.4.10"
   }
 }

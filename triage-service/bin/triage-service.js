@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const cdk = require('aws-cdk-lib');
-const { TriageCliStack } = require('../lib/triage-cli-stack');
+const { TriageServiceStack } = require('../lib/triage-service-stack');
 
 const app = new cdk.App();
-new TriageCliStack(app, 'TriageCliStack', {
+new TriageServiceStack(app, 'TriageServiceStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */

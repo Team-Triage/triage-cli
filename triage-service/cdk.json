@@ -1,5 +1,6 @@
 {
-  "app": "node bin/triage-cli.js",
+  "app": "node bin/triage-service.js", 
+  "requireApproval": "never",
   "watch": {
     "include": [
       "**"

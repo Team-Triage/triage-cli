@@ -1,4 +1,6 @@
+const path = require('path')
 const { Stack, StackProps, CfnOutput, RemovalPolicy } = require("aws-cdk-lib");
+const { DockerImageAsset } = require('aws-cdk-lib/aws-ecr-assets');
 const { GatewayVpcEndpointAwsService, Vpc} = require("aws-cdk-lib/aws-ec2");
 const { AnyPrincipal, Effect, PolicyStatement } = require("aws-cdk-lib/aws-iam");
 
@@ -6,9 +8,9 @@ const ecs = require("aws-cdk-lib/aws-ecs");
 const dynamodb = require("aws-cdk-lib/aws-dynamodb");
 const ecs_patterns = require("aws-cdk-lib/aws-ecs-patterns");
 
-const DEAD_LETTER_TABLE_NAME = "TriageDeadLettersTopicName"
 
-class TriageCliStack extends Stack {
+
+class TriageServiceStack extends Stack {
   /**
    *
    * @param {Construct} scope
@@ -18,11 +20,20 @@ class TriageCliStack extends Stack {
   constructor(scope, id, props) {
     super(scope, id, props);
 
-    const vpc = new Vpc(this, "TriageVPC", {
+    const TOPIC_NAME = process.env.TOPIC_NAME
+    const PARTITION_COUNT = +process.env.PARTITION_COUNT
+    const DEAD_LETTER_TABLE_NAME = `TriageDeadLetters${TOPIC_NAME}`
+
+
+    const asset = new DockerImageAsset(this, `Triage${TOPIC_NAME}Image`, {
+      directory: path.join(__dirname, '../../src'),
+    })
+
+    const vpc = new Vpc(this, `Triage${TOPIC_NAME}VPC`, {
       maxAzs: 2 // Default is all AZs in region
     });
 
-    const cluster = new ecs.Cluster(this, "TriageCluster", {
+    const cluster = new ecs.Cluster(this, `Triage${TOPIC_NAME}Cluster`, {
       vpc: vpc
     });
 
@@ -37,14 +48,14 @@ class TriageCliStack extends Stack {
     });
 
     // Create a load-balanced Fargate service and make it public
-    const TriageFargateService = new ecs_patterns.ApplicationLoadBalancedFargateService(this, "TriageFargateService", {
+    const TriageFargateService = new ecs_patterns.ApplicationLoadBalancedFargateService(this, `Triage${TOPIC_NAME}FargateService`, {
       cluster: cluster, // Required
       cpu: 256, // Default is 256
-      desiredCount: 3, // Default is 1
+      desiredCount: PARTITION_COUNT, // Default is 1
       taskImageOptions: {
-        containerName: "triageContainer",
+        containerName: `triage${TOPIC_NAME}Container`,
         containerPort: 9000,
-        image: ecs.ContainerImage.fromRegistry("themikejung/triage:latest"),
+        image: ecs.ContainerImage.fromDockerImageAsset(asset)
       },
       memoryLimitMiB: 512, // Default is 512
       publicLoadBalancer: true // Default is true,
@@ -76,8 +87,8 @@ class TriageCliStack extends Stack {
     dynamoTable.grantWriteData(TriageFargateService.taskDefinition.taskRole);
 
     // Outputs
-    new CfnOutput(this, 'DynamoDbTableName', { value: dynamoTable.tableName });
+    new CfnOutput(this, 'DyanmoDBTableName', { value: dynamoTable.tableName });
   }
 }
 
-module.exports = { TriageCliStack }
+module.exports = { TriageServiceStack }
