@@ -25,3 +25,5 @@ function deploy() {
 }
 
 export default deploy
+
+console.log("hello world")

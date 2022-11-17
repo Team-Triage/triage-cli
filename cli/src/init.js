@@ -17,7 +17,9 @@ function init () {
   console.log("Created ./src")
   executeCommand("git clone https://github.com/team-triage/triage.git src && cd src && rm -rf .git")
   console.log("Got the latest version of Triage into ./src")
+  console.log("hello world")
   
+  console.log("hello world")
 }
 
 export default init

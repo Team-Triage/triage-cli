@@ -22,3 +22,5 @@ function parseArgs(rawArgs) {
   let args = rawArgs.slice(2)
   return options[args[0]]
 } 
+
+console.log("hello world")
