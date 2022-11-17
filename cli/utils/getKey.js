@@ -1,6 +1,6 @@
-
 function getKey() {
-  return randomStr = () => require('crypto').randomBytes(32).toString('hex')();
+  randomStr = require('crypto').randomBytes(32).toString('hex');
+  return randomStr
 }
 
 module.exports = getKey
