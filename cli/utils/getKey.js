@@ -1,7 +1,6 @@
-const cryptoRandomString = require('crypto-random-string')
 
 function getKey() {
-  return cryptoRandomString({length: 24, type: base64})
+  return randomStr = () => require('crypto').randomBytes(32).toString('hex')();
 }
 
 module.exports = getKey

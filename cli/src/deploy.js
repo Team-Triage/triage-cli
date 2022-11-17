@@ -5,7 +5,8 @@ import getKey from '../utils/getKey'
 
 function deploy() {
   console.log('Adding authentication token to config')
-  writeConfigFile('config.properties', `authentication.token=${getKey()}`)
+  const authToken = getKey()
+  writeConfigFile('config.properties', `authentication.token=${authToken}`)
 
   console.log('Copying config.properties')
   executeCommand("cp config.properties ./src/config.properties")
@@ -19,6 +20,7 @@ function deploy() {
   process.env.TOPIC_NAME = TOPIC_NAME
   process.env.PARTITION_COUNT = PARTITION_COUNT
   executeCommand("cd triage-service && cdk bootstrap && cdk deploy")
+  console.log(`This is the authentication token for your consuming applications: ${authToken}`)
 }
 
 export default deploy
