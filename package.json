@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Team-Triage/triage-cli#readme",
   "dependencies": {
+    "aws-cdk-lib": "^2.50.0",
     "crypto-random-string": "^5.0.0",
     "esm": "^3.2.25",
     "properties-reader": "^2.2.0",
