@@ -1,10 +1,7 @@
 fs = require('fs')
 
 function writeConfigFile(path, string) {
-  let logger = fs.createWriteStream(path, {
-    flag: 'a'
-  })
-  logger.write(string)
+  fs.writeFileSync(path, string, {flag: 'a'})
 }
 
 module.exports = writeConfigFile
