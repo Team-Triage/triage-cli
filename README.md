@@ -9,4 +9,3 @@ Fill in these details as well as the number of partitions that exist for the top
 Next, execute `triage-deploy`. This command will deploy a Triage instance according to the `config.properties` file to the user's AWS account. This step will also create a new DynamoDB table where they can access the dead letter messages.
 
 Users can use the `triage-destroy` command to tear down all associated AWS resources to avoid unnecessary costs.
-
