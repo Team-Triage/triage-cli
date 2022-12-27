@@ -10,7 +10,7 @@
 
 <h2>How to use</h2>
 
-Before starting, be sure that you've logged into `aws-cli`. `triage-cli` will use securely deploy Triage using your account info and default region.
+Before starting, be sure that you've logged into `aws-cli`. `triage-cli` will securely deploy Triage using your account info and default region.
  
  1. First, install the latest version of the `triage-cli` `npm` package with
 
